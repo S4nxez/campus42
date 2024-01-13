@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include <stddef.h>
 
-void	*memcpy(void *restrict	dest, const void *restrict	src, size_t	n)
+void	*ft_memcpy(void *restrict	dest, const void *restrict	src, size_t	n)
 {
 	const unsigned char	*src_bytes;
 	unsigned char		*dest_bytes;
@@ -26,5 +26,5 @@ void	*memcpy(void *restrict	dest, const void *restrict	src, size_t	n)
 		i++;
 	}
 	return (dest);
-	//dale testeo en local aunq sea
+	//esto esta mal hay que arreglarlo
 }

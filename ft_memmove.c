@@ -10,16 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*memmove(void *dst, const void *src, size_t len)
-{
-	char	*dst_bytes;
-	char	*src_bytes;
+#include <stdio.h>
+#include <string.h>
 
-	src_bytes = src;
-	dst_bytes = dst;
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	char	*dest_bytes;
+	const char	*aux_ptr;
+
+	dest_bytes = (char *)dst;
+	aux_ptr = (const char *)src;
 	while (len--)
 	{
-		dst_bytes = src_bytes;
+		dest_bytes = aux_ptr;
+		aux_ptr++;
+		dest_bytes++;
 	}
 	return (dst);
+}
+int main()
+{
+	char source[] = "Hello, World!";
+	char destination[5];
+	char *src_ptr = source;
+	char *dst_ptr = destination;
+
+	// Using the standard library memmove for comparison
+	memmove(dst_ptr, src_ptr, 5);
+	printf("Standard memmove: %s\n", destination);
+
+	char source2[] = "Hello, World!";
+	char destination2[5];
+	char *src_ptr2 = source2;
+	char *dst_ptr2 = destination2;
+	// Using custom memmove implementation
+	ft_memmove(dst_ptr2, src_ptr2, 5);
+	printf("Custom memmove: %s\n", destination2);
+
+	return (0);
 }

@@ -19,5 +19,5 @@ void	ft_bzero(void *s, size_t n)
 	{
 		*aux = 0;
 		aux++;
-	}//TESTEA EN MACOS QUE AQUI NO TENGO LA LIBRERIA STRINGS.H
+	}
 }
