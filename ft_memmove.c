@@ -10,42 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	const char	*aux_src;
+	char		*aux_dst;
+	size_t		n;
+
+	if (!dst && !src)
+		return (NULL);
+	aux_dst = (char *)dst;
+	aux_src = (char *)src;
+	n = 0;
+	if (aux_dst > aux_src)
+	{
+		while (len--)
+			aux_dst[len] = aux_src[len];
+		return (aux_dst);
+	}
+	else
+	{
+		while (n < len)
+		{
+			aux_dst[n] = aux_src[n];
+			n++;
+		}
+		return (aux_dst);
+	}
+}
+
+/*
 #include <stdio.h>
 #include <string.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	main(void)
 {
-	char	*dest_bytes;
-	const char	*aux_ptr;
-
-	dest_bytes = (char *)dst;
-	aux_ptr = (const char *)src;
-	while (len--)
-	{
-		dest_bytes = aux_ptr;
-		aux_ptr++;
-		dest_bytes++;
-	}
-	return (dst);
-}
-int main()
-{
-	char source[] = "Hello, World!";
-	char destination[5];
-	char *src_ptr = source;
-	char *dst_ptr = destination;
+	char	source[] = "Hello, World!";
+	char	destination[5];
+	char	*src_ptr = source;
+	char	*dst_ptr = src_ptr + 5;
 
 	// Using the standard library memmove for comparison
-	memmove(dst_ptr, src_ptr, 5);
-	printf("Standard memmove: %s\n", destination);
+	printf("OG memmove return value:  %s\n", memmove( src_ptr, dst_ptr,5));
+	printf("Standard memmove: %s\n", source);
 
-	char source2[] = "Hello, World!";
-	char destination2[5];
-	char *src_ptr2 = source2;
-	char *dst_ptr2 = destination2;
+	char	source2[] = "Hello, World!";
+	char	destination2[5];
+	char	*src_ptr2 = source2;
+	char	*dst_ptr2 = src_ptr2 + 5;
 	// Using custom memmove implementation
-	ft_memmove(dst_ptr2, src_ptr2, 5);
-	printf("Custom memmove: %s\n", destination2);
+	printf("Custom memmove ret value:  %s\n", ft_memmove(src_ptr2, dst_ptr2, 5));
+	printf("Custom memmove:.. %s\n", source2);
 
 	return (0);
-}
+}*/
