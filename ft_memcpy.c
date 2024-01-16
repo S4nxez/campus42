@@ -9,22 +9,23 @@
 /*   Updated: 2024/01/10 20:08:27 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-void	*ft_memcpy(void *restrict	dest, const void *restrict	src, size_t	n)
+void	*ft_memcpy(void *restrict	dst, const void *restrict	src, size_t	n)
 {
 	const unsigned char	*src_bytes;
-	unsigned char		*dest_bytes;
-	int					i;
+	unsigned char		*dst_bytes;
+	size_t					i;
 
-	dest_bytes = dest;
+	dst_bytes = dst;
 	src_bytes = src;
+	if (!dst_bytes && !src_bytes)
+		return (dst);
 	i = 0;
 	while (i < n)
 	{
-		dest_bytes[i] = src_bytes[i];
+		dst_bytes[i] = src_bytes[i];
 		i++;
 	}
-	return (dest);
-	//esto esta mal hay que arreglarlo
+	return (dst);
+	//revisar pero parece que todo bien
 }
