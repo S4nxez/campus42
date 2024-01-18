@@ -9,8 +9,6 @@
 /*   Updated: 2024/01/18 17:34:50 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <string.h>
-#include <stdio.h>
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -29,6 +27,9 @@ char	*ft_strchr(const char *s, int c)
 }
 
 /*
+#include <string.h>
+#include <stdio.h>
+
 int	main(void)
 {
 	char	a[] = "hola que tal";

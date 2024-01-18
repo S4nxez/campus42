@@ -27,5 +27,5 @@ void	*ft_memcpy(void *restrict	dst, const void *restrict	src, size_t	n)
 		i++;
 	}
 	return (dst);
-	//revisar pero parece que todo bien
+	//revisar pero parece que todo bien // IMPORTANTE BORRAR EL RESTRICT
 }

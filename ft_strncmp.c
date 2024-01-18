@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/18 18:22:55 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/01/18 18:22:55 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/01/18 19:05:24 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/01/18 19:05:24 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*ret;
-	size_t	i;
-
-	ret = NULL;
-	i = 0;
-	while (s[i] != '\0')
+	while (*s1 != '\0' && *s2 != '\0' && n--)
 	{
-		if (s[i] == c)
-			ret = ((char *)&s[i]);
-		i++;
+		if (*s1 != *s2)
+			return ((unsigned char)(*s1) - (unsigned char)(*s2));
+		s1++;
+		s2++;
 	}
-	if (c == s[i])
-		return ((char *)&s[i]);
-	return (ret);
+	if (n > 0)
+	{
+		return ((unsigned char)(*s1) - (unsigned char)(*s2));
+	}
+	return (0);
 }
 
 /*
-#include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
 int	main(void)
 {
-	char	a[] = "hola que tal";
-	char	*a_ptr = a;
-
-	printf ("antes..: %s\n",a_ptr);
-	printf ("despues: %s\n",ft_strchr(a_ptr, 'a'));
+	printf("%d\n", ft_strncmp("hola", "holah", 4));
+	printf("%d\n", strncmp("hola", "holah", 4));
 }*/
