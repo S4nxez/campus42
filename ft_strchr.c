@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 19:44:55 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/01/15 19:44:55 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/01/18 17:34:50 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/01/18 17:34:50 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <string.h>
 #include <stdio.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	srcsize;
 	size_t	i;
 
-	srcsize = ft_strlen(src);
 	i = 0;
-	if (srcsize + 1 < dstsize)
+	while (s[i] != '\0')
 	{
-		ft_memcpy(dst, src, srcsize + 1);
+		if (s[i] == c)
+			return ((char *)&s[i]);
+		i++;
 	}
-	else if (dstsize != 0)
-	{
-		ft_memcpy(dst, src, dstsize - 1);
-		dst[dstsize - 1] = '\0';
-	}
-	return (srcsize);
+	if (c == s[i])
+		return ((char *)&s[i]);
+	return (NULL);
 }
+
+/*
+int	main(void)
+{
+	char	a[] = "hola que tal";
+	char	*a_ptr = a;
+
+	printf ("antes..: %s\n",a_ptr);
+	printf ("despues: %s\n",ft_strchr(a_ptr, '\0'));
+}*/
