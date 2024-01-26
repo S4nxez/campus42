@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:34:31 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/01/24 18:39:25 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/01/24 18:41:31 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,12 @@ char	*ft_strdup(const char *s1)
 	ptr[i] = '\0';
 	return (ptr);
 }
+
+/*
+int main(void)
+{
+	char *str = "hola";
+	char *str2 = ft_strdup(str);
+	printf("str2: %s\n", str2);
+	return (0);
+}*/
