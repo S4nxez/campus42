@@ -12,7 +12,7 @@
 #include <string.h>
 #include <stdio.h>
 
-size_t	strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	len_src;
 	size_t	len_dst;
@@ -24,7 +24,7 @@ size_t	strlcat(char *dst, const char *src, size_t dstsize)
 	while (dstsize >= total_size - 1)
 	{
 		ft_memcpy /////entiendo los solucionarios pero no lo se hacer por mi cuenta porque creo que no acabo de entender el enunciado
-		
+
 	}
 	return ();
 }

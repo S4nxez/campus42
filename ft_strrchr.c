@@ -9,8 +9,9 @@
 /*   Updated: 2024/01/18 18:22:55 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	char	*ret;
 	size_t	i;

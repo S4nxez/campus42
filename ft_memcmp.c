@@ -9,6 +9,7 @@
 /*   Updated: 2024/01/21 10:38:14 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
@@ -29,7 +30,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 }
 
 /*
-Tener en cuenta lineas 19 y 20 donde está el asterisco
+Tener en cuenta lineas 20 y 21 donde está el asterisco
 
 Estamos comparando bloques de memoria, y al tratar los punteros
 como unsigned char, estamos asegurando que cada elemento que leemos

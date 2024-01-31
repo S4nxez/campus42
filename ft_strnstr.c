@@ -9,8 +9,9 @@
 /*   Updated: 2024/01/26 16:44:31 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char	*ft_strnst(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	len_needle;
 	size_t	i;
