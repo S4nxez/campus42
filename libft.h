@@ -12,9 +12,13 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-
 # include <stddef.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}				t_list;
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strrchr(const char *s, int c);
@@ -37,7 +41,7 @@ int		ft_isalnum(int c);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_atoi(const char *str);
-char *ft_strjoin(char const *s1, char const *s2);
-char *ft_strtrim(char const *s1, char const *set);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strtrim(char const *s1, char const *set);
 
 #endif
