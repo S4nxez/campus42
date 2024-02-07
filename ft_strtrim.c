@@ -11,24 +11,40 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	quit_init(char s1, char const *set);
+#include <stdlib.h>
+#include <stdio.h>
+int	quit(char s1, char const *set);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
-	size_t	len;
+	int		ini;
+	int		fin;
+	int		u;
+	char	*ret;
 
-	i=0;
-	len = ft_strlen(s1);
-	while (quit_init(s1[i], set))
-		i++;
-	const char *ret = &s1[i];
-	return ((char *)ret);
+	ini = 0;
+	while (quit(s1[ini], set))
+		ini++;
+	fin = ft_strlen(s1) - 1;
+	while (quit(s1[fin], set))
+		fin--;
+	fin++;
+	printf("fin: %d\nini: %d\n\n", fin, ini);
+	ret = (char *)malloc(sizeof(char *) * (fin - ini + 1));
+	if (!ret)
+		return (NULL);
+	u = 0;
+	while (ini < fin)
+	{
+		ret[u] = s1[ini];
+		ini++;
+		u++;
+	}
+	ret[u] = '\0';
+	return (ret);
 }
 
-int	quit_init(char s1, char const *set)
+int	quit(char s1, char const *set)
 {
 	int	i;
 
@@ -37,18 +53,17 @@ int	quit_init(char s1, char const *set)
 	{
 		if (set[i] == s1)
 			return (1);
-		i++;
+		i ++;
 	}
 	return (0);
 }
 
 //#include <shlwapi.h>
-#include <stdio.h>
-#include <stdlib.h>
+
 
 int	main(void)
 {
-	printf("FT_Strtrim: %s", ft_strtrim("ababbabbb hola baba", "ab"));
+	printf("FT_Strtrim:%s", ft_strtrim("ababbabbbholabaababba", "ab"));
 	//	printf("Strtrim:    %s", strtrim(""));
 	return (0);
 }
