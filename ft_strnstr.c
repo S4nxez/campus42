@@ -22,7 +22,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	j = 0;
 	if (len_needle == 0)
 		return ((char *) haystack);
-	while (i < len && haystack[i])
+	while (i < len && haystack[i])// _strncmp
 	{
 		while (haystack[i + j] == needle[j] && haystack[i + j] && i + j < len)
 		{
@@ -33,6 +33,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		i += j - 1;
 		j = 0;
 		i++;
-	}//darle un buen repaso a esto que lo he hecho a medias y con pinzas
+	}
 	return (NULL);
 }

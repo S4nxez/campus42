@@ -61,9 +61,9 @@ int	quit(char s1, char const *set)
 //#include <shlwapi.h>
 
 
-int	main(void)
+/*int	main(void)
 {
 	printf("FT_Strtrim:%s", ft_strtrim("ababbabbbholabaababba", "ab"));
 	//	printf("Strtrim:    %s", strtrim(""));
 	return (0);
-}
+}*/

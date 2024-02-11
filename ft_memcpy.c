@@ -9,9 +9,10 @@
 /*   Updated: 2024/01/10 20:08:27 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict	dst, const void *restrict	src, size_t	n)
+void	*ft_memcpy(void	*dst, const void	*src, size_t	n)
 {
 	const unsigned char	*src_bytes;
 	unsigned char		*dst_bytes;
@@ -28,5 +29,4 @@ void	*ft_memcpy(void *restrict	dst, const void *restrict	src, size_t	n)
 		i++;
 	}
 	return (dst);
-	//revisar pero parece que todo bien // IMPORTANTE BORRAR EL RESTRICT
 }
