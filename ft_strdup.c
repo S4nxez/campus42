@@ -6,15 +6,17 @@
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:34:31 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/01/24 18:41:31 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:21:07 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
 {
-	unsigned char	*ptr;
-	size_t			i;
+	char	*ptr;
+	size_t	i;
 
 	ptr = malloc(ft_strlen(s1) + 1);
 

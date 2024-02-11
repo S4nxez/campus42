@@ -6,9 +6,10 @@
 /*   By: dansanc3 <dansanc3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:32:20 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/01/11 17:44:20 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/02/11 10:37:16 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
