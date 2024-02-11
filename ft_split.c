@@ -21,7 +21,6 @@ int	count_words(char const *s, char c)
 
 	i = 0;
 	words_num = 0;
-	printf("\nCount words processing: ");
 	while (s[i] != '\0')
 	{
 		if (s[i] != c)
@@ -29,7 +28,6 @@ int	count_words(char const *s, char c)
 			while (s[i] != '\0' && s[i] != c)
 				i++;
 			words_num++;
-			printf("#");
 		}
 		else
 			i++;
@@ -37,21 +35,14 @@ int	count_words(char const *s, char c)
 	return (words_num);
 }
 
-char	**ft_split(char const *s, char c)
+void	split_words(char const *s, char c, char **ret)
 {
-	int		words;
-	char	**ret;
-	int		i;
-	int		j;
-	int		k;
+	int	i;
+	int	j;
+	int	k;
 
-	words = count_words(s, c);
-	ret = (char **)malloc(sizeof(char *) * (words + 1));
-	if (ret == NULL)
-		return (NULL);
 	i = 0;
 	j = 0;
-	k = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] != c)
@@ -64,7 +55,7 @@ char	**ft_split(char const *s, char c)
 			}
 			ret[j] = (char *)malloc(sizeof(char) * (k + 1));
 			if (ret[j] == NULL)
-				return (NULL);
+				return ;
 			i -= k;
 			k = 0;
 			while (s[i] != '\0' && s[i] != c)
@@ -75,14 +66,26 @@ char	**ft_split(char const *s, char c)
 			}
 			ret[j][k] = '\0';
 			j++;
-		}else{
-			i++;
 		}
+		else
+			i++;
 	}
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int		words;
+	char	**ret;
+
+	words = count_words(s, c);
+	ret = (char **)malloc(sizeof(char *) * (words + 1));
+	if (ret == NULL)
+		return (NULL);
+	split_words(s, c, ret);
 	return (ret);
 }
 
-int	main()
+int	main(void)
 {
 	char	**spliteado = ft_split("hola que tal", ' ');
 	int		num = count_words("hola que tal", ' ');
