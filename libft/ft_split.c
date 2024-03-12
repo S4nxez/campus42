@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 int	count_words(char const *s, char c)
 {
@@ -35,6 +33,19 @@ int	count_words(char const *s, char c)
 	return (words_num);
 }
 
+void	fill_matrix(int j, char const *s, char c, char **ret)
+{
+	int	k;
+
+	k = 0;
+	while (s[k] != '\0' && s[k] != c)
+	{
+		ret[j][k] = s[k];
+		k++;
+	}
+	ret[j][k] = '\0';
+}
+
 void	split_words(char const *s, char c, char **ret)
 {
 	int	i;
@@ -47,24 +58,14 @@ void	split_words(char const *s, char c, char **ret)
 	{
 		if (s[i] != c)
 		{
-			k = 0;
-			while (s[i] != '\0' && s[i] == c)
-			{
+			k = i;
+			while (s[k] != '\0' && s[k] != c)
 				k++;
-				i++;
-			}
-			ret[j] = (char *)malloc(sizeof(char) * (k + 1));
+			ret[j] = (char *)malloc(sizeof(char) * (k - i + 1));
 			if (ret[j] == NULL)
 				return ;
-			i -= k;
-			k = 0;
-			while (s[i] != '\0' && s[i] != c)
-			{
-				ret[j][k] = s[i];
-				i++;
-				k++;
-			}
-			ret[j][k] = '\0';
+			fill_matrix(j, &s[i], c, ret);
+			i = k;
 			j++;
 		}
 		else
@@ -85,11 +86,13 @@ char	**ft_split(char const *s, char c)
 	return (ret);
 }
 
-int	main(void)
+/*int	main(void)
 {
-	char	**spliteado = ft_split("hola que tal", ' ');
-	int		num = count_words("hola que tal", ' ');
-	int		j = 0;
+	const char	strin[] = " hola   que tal";
+	const char	c = ' ';
+	char		**spliteado = ft_split(strin , c);
+	int			num = count_words(strin, c);
+	int			j = 0;
 
 	printf("\nnumero : %d\n", num);
 	while (j < num)
@@ -98,3 +101,4 @@ int	main(void)
 		j++;
 	}
 }
+*/
