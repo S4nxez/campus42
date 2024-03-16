@@ -24,7 +24,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	}
 }
 
-
+/*
 #include <stdio.h>
 
 void	*ft_toupper2(unsigned int i, char c)
@@ -44,4 +44,4 @@ int main()
 		printf("%s\n", result);
 	}
 	return 0;
-}
+}*/

@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -21,22 +20,32 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	j = 0;
-	i = 0;
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	ret = (char *)malloc((len1 + len2) * sizeof(char const));
+	ret = (char *)malloc((len1 + len2) * sizeof(char));
 	if (ret == NULL)
 		return (NULL);
-	while (s1[i] != '\0')
+	i = 0;
+	while (s1[i])
 	{
 		ret[i] = s1[i];
 		i++;
 	}
-	while (s2[j] != '\0')
+	j = 0;
+	while (s2[j])
 	{
 		ret[i + j] = s2[j];
 		j++;
 	}
+	ret[i + j] = '\0';
 	return (ret);
 }
+
+/*#include <stdio.h>
+
+int	main(void){
+	char	*s1 = "hola ";
+	char	*s2 = "mundo!";
+
+	printf("%s", ft_strjoin(s1,s2));
+}*/

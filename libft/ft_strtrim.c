@@ -11,9 +11,20 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
-int	quit(char s1, char const *set);
+
+int	quit(char s1, char const *set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i] != '\0')
+	{
+		if (set[i] == s1)
+			return (1);
+		i ++;
+	}
+	return (0);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -44,22 +55,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (ret);
 }
 
-int	quit(char s1, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i] != '\0')
-	{
-		if (set[i] == s1)
-			return (1);
-		i ++;
-	}
-	return (0);
-}
-
 //#include <shlwapi.h>
-
 
 /*int	main(void)
 {

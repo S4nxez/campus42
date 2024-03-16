@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strdup(const char *s1)
 {
@@ -19,7 +18,6 @@ char	*ft_strdup(const char *s1)
 	size_t	i;
 
 	ptr = malloc(ft_strlen(s1) + 1);
-
 	if (!ptr)
 		return (NULL);
 	i = 0;
