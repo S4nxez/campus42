@@ -12,12 +12,29 @@
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	write(fd, ft_itoa(n), 1);
+	long	nlong;
+	char	*printable;
+	int		i;
+
+	nlong = n;
+	printable = (char *)malloc(sizeof(char) * ft_int_len(nlong));
+	if (printable == NULL)
+		return ;
+	printable = ft_itoa(n);
+	i = 0;
+	while (printable[i])
+	{
+		write(fd, &printable[i], 1);
+		i++;
+	}
+	free(printable);
 }
 
-int	main()
+/*
+int	main(void)
 {
-	ft_putnbr_fd(98, 1);
+	ft_putnbr_fd(-9832, 1);
 }
+*/
