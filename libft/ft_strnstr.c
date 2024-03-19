@@ -13,26 +13,46 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	len_needle;
 	size_t	i;
 	size_t	j;
 
-	len_needle = ft_strlen(needle);
 	i = 0;
 	j = 0;
-	if (len_needle == 0)
+	if (needle[0] == 0)
 		return ((char *) haystack);
-	while (i < len && haystack[i])
+
+	while (haystack[i] && i < len)
 	{
 		while (haystack[i + j] == needle[j] && haystack[i + j] && i + j < len)
 		{
 			j++;
-			if (needle[j] == '\0')
-				return ((char *)haystack + i);
+			if (needle[j] == 0)
+				return ((char *) haystack + i);
 		}
-		i += j - 1;
-		j = 0;
 		i++;
+		j = 0;
 	}
-	return (NULL);
+	return (0);
 }
+
+/*
+#include <stdio.h>
+int	main(void)
+{
+	const	char *haystack = "Hello, World! This is a test string.";
+	const	char *needle = "World";
+	size_t	len = ft_strlen(haystack);
+
+	char	*result = ft_strnstr(haystack, needle, len);
+
+	if (result)
+	{
+		printf("Needle found at index: %ld\n", result - haystack);
+	}
+	else
+	{
+		printf("Needle not found.\n");
+	}
+	return (0);
+}
+*/

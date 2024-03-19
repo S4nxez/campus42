@@ -46,6 +46,8 @@ char	*ft_itoa(int n)
 		positive = 0;
 	}
 	ret = (char *)malloc(sizeof(char) * len);
+	if (ret == NULL)
+		return NULL;
 	ret[len] = '\0';
 	while (len > 0)
 	{

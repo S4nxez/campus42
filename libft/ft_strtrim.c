@@ -40,7 +40,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (quit(s1[fin], set))
 		fin--;
 	fin++;
-	printf("fin: %d\nini: %d\n\n", fin, ini);
 	ret = (char *)malloc(sizeof(char *) * (fin - ini + 1));
 	if (!ret)
 		return (NULL);
@@ -54,7 +53,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ret[u] = '\0';
 	return (ret);
 }
-
+x
 //#include <shlwapi.h>
 
 /*int	main(void)
