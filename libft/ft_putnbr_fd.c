@@ -15,21 +15,22 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	long	nlong;
-	char	*printable;
-	int		i;
 
 	nlong = n;
-	printable = (char *)malloc(sizeof(char) * ft_int_len(nlong));
-	if (printable == NULL)
+	if (fd < 0)
 		return ;
-	printable = ft_itoa(n);
-	i = 0;
-	while (printable[i])
+	if (nlong < 0)
 	{
-		write(fd, &printable[i], 1);
-		i++;
+		nlong = -nlong;
+		ft_putchar_fd('-', fd);
 	}
-	free(printable);
+	if (nlong < 10)
+		ft_putchar_fd(nlong + '0', fd);
+	else
+	{
+		ft_putnbr_fd(nlong / 10, fd);
+		ft_putchar_fd(nlong % 10 + '0', fd);
+	}
 }
 
 /*
