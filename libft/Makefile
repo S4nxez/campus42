@@ -1,6 +1,5 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
 NAME = libft.a
 
 SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c \
@@ -10,17 +9,26 @@ ft_tolower.c ft_toupper.c
 
 OBJ = $(SRC:.c=.o)
 
+BNS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c
+
+OBJS_BNS = $(BNS:.c=.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar -r $(NAME) $(OBJ)
 
+bonus: $(OBJS) $(OBJS_BNS)
+	ar -rcs $(NAME) $(OBJ) $(OBJS_BNS)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(OBJS_BNS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all NAME clean fclean re
+rebonus: fclean bonus
+
+.PHONY: all NAME clean fclean re rebonus
