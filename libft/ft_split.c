@@ -12,7 +12,17 @@
 
 #include "libft.h"
 
-int	count_words(char const *s, char c)
+static size_t	ft_strlen_delim(char const *str, char delim)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] != delim)
+		i++;
+	return (i);
+}
+
+static int	count_words(char const *s, char c)
 {
 	int	i;
 	int	words_num;
@@ -23,9 +33,9 @@ int	count_words(char const *s, char c)
 	{
 		if (s[i] != c)
 		{
+			words_num++;
 			while (s[i] != '\0' && s[i] != c)
 				i++;
-			words_num++;
 		}
 		else
 			i++;
@@ -33,56 +43,42 @@ int	count_words(char const *s, char c)
 	return (words_num);
 }
 
-void	fill_matrix(int j, char const *s, char c, char **ret)
-{
-	int	k;
-
-	k = 0;
-	while (s[k] != '\0' && s[k] != c)
-	{
-		ret[j][k] = s[k];
-		k++;
-	}
-	ret[j][k] = '\0';
-}
-
-void	split_words(char const *s, char c, char **ret)
+static void	*ft_delete_matrix(char **mat)
 {
 	int	i;
-	int	j;
-	int	k;
 
 	i = 0;
-	j = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] != c)
-		{
-			k = i;
-			while (s[k] != '\0' && s[k] != c)
-				k++;
-			ret[j] = (char *)malloc(sizeof(char) * (k - i + 1));
-			if (ret[j] == NULL)
-				return ;
-			fill_matrix(j, &s[i], c, ret);
-			i = k;
-			j++;
-		}
-		else
-			i++;
-	}
+	while (mat[i])
+		free(mat[i++]);
+	free(mat);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		words;
+	size_t	i;
+	int		k;
+	int		words_num;
 	char	**ret;
 
-	words = count_words(s, c);
-	ret = (char **)malloc(sizeof(char *) * (words + 1));
-	if (ret == NULL)
+	if (!s)
 		return (NULL);
-	split_words(s, c, ret);
+	words_num = count_words(s, c);
+	ret = (char **)malloc((words_num + 1) * sizeof(char *));
+	if (!ret)
+		return (NULL);
+	i = 0;
+	k = -1;
+	while (++k < words_num)
+	{
+		while (s[i] == c)
+			i++;
+		ret[k] = ft_substr(s, i, ft_strlen_delim(s + i, c));
+		if (!ret[k])
+			return (ft_delete_matrix(ret));
+		i += ft_strlen_delim(s + i, c);
+	}
+	ret[words_num] = NULL;
 	return (ret);
 }
 
