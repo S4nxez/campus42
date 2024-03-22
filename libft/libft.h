@@ -15,13 +15,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}					t_list;
-
+}				t_list;
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
@@ -57,6 +56,4 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 
-//Cosecha propia
-int		ft_int_len(long n);
 #endif
