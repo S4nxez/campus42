@@ -22,7 +22,7 @@ static int	int_len(long n)
 		n *= -1;
 		len++;
 	}
-	while (n > 10)
+	while (n >= 10)
 	{
 		n = n / 10;
 		len++;
@@ -48,7 +48,7 @@ char	*ft_itoa(int n)
 	else if (n == 0)
 		ret[0] = '0';
 	ret[len--] = '\0';
-	while (len > 0)
+	while (nlong > 0)
 	{
 		ret[len--] = '0' + (nlong % 10);
 		nlong /= 10;
