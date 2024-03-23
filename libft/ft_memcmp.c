@@ -29,23 +29,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-/*
-Tener en cuenta lineas 20 y 21 donde está el asterisco
-
-Estamos comparando bloques de memoria, y al tratar los punteros
-como unsigned char, estamos asegurando que cada elemento que leemos
-sea interpretado como un byte sin signo, es decir, un valor entre 0 y
-255.
-
-Si tratamos los punteros como punteros a int (como en la versión original
-ft_memcmp), cada elemento se interpretará como un entero de mayor tamaño,
-posiblemente 4 bytes o más, dependiendo de la arquitectura. Esto podría
-llevar a comparaciones incorrectas y desbordamientos si los bloques de
-memoria contienen datos no enteros.
-
-Entonces, al usar unsigned char, nos aseguramos de que cada elemento se
-trate como un byte individual, evitando problemas de interpretación y
-desbordamiento, y garantizando una comparación segura y correcta de
-bloques de memoria.
-*/
