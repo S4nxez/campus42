@@ -28,6 +28,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
 /*
 Al devolver (void *)&s_aux[i], estás devolviendo un puntero a la ubicación
 exacta del byte que coincidió en la memoria original. El casting a (void *)
