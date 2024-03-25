@@ -16,6 +16,8 @@ t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*aux;
 
+	if (!lst)
+		return (NULL);
 	aux = lst;
 	while (aux->next)
 		aux = aux->next;
