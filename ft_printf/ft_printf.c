@@ -11,13 +11,35 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 int	ft_printf(const char *format, ...)
 {
 	va_list args;
-	return 0;
+	int	ret;
+
+	ret = 0;
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			if (*format == 's')
+				ft_putstr_fd(va_arg(args, char *),1);
+			else
+				format -= 2;
+			format++;
+		}
+		write(1,format,1);
+		format++;
+		ret++;
+	}
+	va_end(args);
+	return (ret);
 }
 
 int	main(){
+	ft_printf("hola %s\n", "mundo");
 	return 0;
 }
