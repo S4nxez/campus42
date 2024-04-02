@@ -15,8 +15,8 @@
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int	ret;
+	va_list	args;
+	int		ret;
 
 	ret = 0;
 	va_start(args, format);
@@ -26,12 +26,18 @@ int	ft_printf(const char *format, ...)
 		{
 			format++;
 			if (*format == 's')
-				ft_putstr_fd(va_arg(args, char *),1);
+				ft_putstr_fd(va_arg(args, char *), 1);
+			else if (*format == 'd' || *format == 'i')
+				ft_putnbr_fd(va_arg(args, int), 1);
+			else if (*format == 'c')
+				ft_putchar_fd(va_arg(args, int), 1);
+			else if (*format == 'u')
+				ft_putnbr_fd(va_arg(args, unsigned int), 1);
 			else
 				format -= 2;
 			format++;
 		}
-		write(1,format,1);
+		write(1, format, 1);
 		format++;
 		ret++;
 	}
@@ -39,7 +45,8 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int	main(){
-	ft_printf("hola %s\n", "mundo");
-	return 0;
+int	main(void)
+{
+	ft_printf("hola %s %s %d %c \n", "mundo", "!", 12, '.');
+	return (0);
 }
