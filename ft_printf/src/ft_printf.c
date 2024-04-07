@@ -45,8 +45,10 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
+/*
 int	main(void)
 {
 	ft_printf("hola %s %s %d %c \n", "mundo", "!", 12, '.');
 	return (0);
 }
+*/
