@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.C                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 21:49:54 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/03/16 21:49:54 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/04/08 17:35:58 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/05/17 17:23:11 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_putchar(int c)
 {
-	t_list	*element;
-
-	element = (t_list *)malloc(sizeof(t_list));
-	if (!element)
-		return (NULL);
-	element->content = content;
-	element->next = NULL;
-	return (element);
+	if (write (1, &c, 1) != 1)
+		return (-1);
+	return (1);
 }

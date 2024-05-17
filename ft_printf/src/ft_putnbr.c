@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 17:04:49 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/03/12 17:04:49 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/04/09 22:40:52 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/05/17 17:23:35 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static int	int_len(long n)
 {
@@ -48,17 +48,18 @@ char	*ft_itoa(int n)
 	else if (n == 0)
 		ret[0] = '0';
 	ret[len--] = '\0';
-	while (nlong > 0)
+	while (nlong >= 10)
 	{
 		ret[len--] = '0' + (nlong % 10);
 		nlong /= 10;
 	}
+	ret[len] = nlong + '0';
 	return (ret);
 }
 
-/*
-#include <stdio.h>
-int main(){
-	printf("%i \n",int_len(-3720));
-	printf("%s \n",ft_itoa(-3720));
-}*/
+int	ft_putnbr(int c)
+{
+	if (ft_putstr(ft_itoa(c)) != 1)
+		return (-1);
+	return (1);
+}

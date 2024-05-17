@@ -1,47 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 20:02:04 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/03/14 20:02:04 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/04/09 19:15:01 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/05/17 17:23:53 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_putstr(char *s)
 {
-	int		i;
+	size_t	ret;
 
-	i = 0;
-	while (s[i])
+	ret = 0;
+	if (!s)
 	{
-		(*f)(i, &s[i]);
-		i++;
+		if (write (1, "(null)", 6) != 6)
+			return (-1);
+		return (6);
 	}
-}
-
-/*
-#include <stdio.h>
-
-void	*ft_toupper2(unsigned int i, char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return c - 'a' + 'A';
-	return (c);
-}
-
-int main()
-{
-	char const *s = "Hello, World!";
-	char *result = ft_strmapi(s, ft_toupper2);
-
-	if (result)
+	while (s[ret])
 	{
-		printf("%s\n", result);
+		if (write(1, &s[ret], 1) != 1)
+			return (-1);
+		ret++;
 	}
-	return 0;
-}*/
+	return (ret);
+}

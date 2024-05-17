@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 20:39:57 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/03/14 20:39:57 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/05/15 18:18:51 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/05/15 20:02:42 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putunbr(unsigned int n)
 {
-	int	i;
+	int	ret;
 
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	if (n >= 10)
+		ft_putunbr(n / 10);
+	ret = ft_putchar((n % 10) + '0');
+	return (ret);
 }

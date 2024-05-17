@@ -5,13 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/31 20:32:39 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/03/31 20:32:39 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/04/08 17:17:40 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/04/08 17:17:40 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
+
+static int	print_format(va_list args, char c);
 
 int	ft_printf(const char *format, ...)
 {
@@ -25,30 +26,40 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 's')
-				ft_putstr_fd(va_arg(args, char *), 1);
-			else if (*format == 'd' || *format == 'i')
-				ft_putnbr_fd(va_arg(args, int), 1);
-			else if (*format == 'c')
-				ft_putchar_fd(va_arg(args, int), 1);
-			else if (*format == 'u')
-				ft_putnbr_fd(va_arg(args, unsigned int), 1);
-			else
-				format -= 2;
-			format++;
+			ret += print_format(args, *format);
 		}
-		write(1, format, 1);
+		else
+		{
+			if (!ft_putchar(*format))
+				return (-1);
+			ret++;
+		}
 		format++;
-		ret++;
 	}
 	va_end(args);
 	return (ret);
 }
 
-/*
-int	main(void)
+static int	print_format(va_list args, char c)
 {
-	ft_printf("hola %s %s %d %c \n", "mundo", "!", 12, '.');
-	return (0);
+	if (c == 's')
+		return (ft_putstr(va_arg(args, char *)));
+	else if (c == 'c')
+		return (ft_putchar(va_arg(args, int)));
+	else if (c == 'd' || c == 'i')
+		return (ft_putnbr(va_arg(args, int)));
+	else if (c == 'u')
+		return (ft_putunbr(va_arg(args, unsigned int)));
+	else if (c == '%')
+		return (ft_putchar('%'));
+	else if (c == 'x' || c == 'X')
+		return (ft_puthex((unsigned long)va_arg(args, unsigned int), c));
+	else if (c == 'p')
+	{
+		if (ft_putstr("0x") != -1)
+			return (2
+				+ ft_puthex((unsigned long)(unsigned long)va_arg(args, void *),
+				c));
+	}
+	return (-1);
 }
-*/

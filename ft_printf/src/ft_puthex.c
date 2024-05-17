@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/23 15:07:49 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/03/23 15:07:49 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/05/16 11:24:13 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/05/16 19:11:11 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+int	ft_puthex(unsigned int n, char format)
 {
-	(*del)(lst->content);
-	free (lst);
+	const char	*converter;
+
+	if (format == 'X')
+		converter = "0123456789ABCDEF";
+	else
+		converter = "0123456789abcdef";
+	if (n > 15)
+	{
+		ft_puthex(n / 16, format);
+		n %= 16;
+	}
+	write(1, &(converter[n]), 1);
+	return (1);
 }
