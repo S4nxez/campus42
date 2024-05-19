@@ -10,9 +10,6 @@ Aquí encontrarás una colección de proyectos realizados durante mi experiencia
 
 Libft es un proyecto esencial en Campus 42. Se trata de una biblioteca estándar en C que contiene una variedad de funciones útiles para trabajar con cadenas, caracteres, memoria y listas.
 
-Para obtener más información sobre el proyecto Libft, te invito a explorar el README.md en la carpeta correspondiente.
-
-
 Para obtener más información sobre el proyecto Libft, consulta el README.md en la carpeta correspondiente.
 ### ft_printf
 
