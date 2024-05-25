@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 22:40:52 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/05/17 17:23:35 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:38:14 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ char	*ft_itoa(int n)
 
 int	ft_putnbr(int c)
 {
-	if (ft_putstr(ft_itoa(c)) != 1)
-		return (-1);
-	return (1);
+	char	*itoa;
+	int		ret;
+
+	itoa = ft_itoa(c);
+	ret = ft_putstr(itoa);
+	free(itoa);
+	return (ret);
 }

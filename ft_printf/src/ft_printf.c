@@ -42,6 +42,8 @@ int	ft_printf(const char *format, ...)
 
 static int	print_format(va_list args, char c)
 {
+	void	*ptr;
+
 	if (c == 's')
 		return (ft_putstr(va_arg(args, char *)));
 	else if (c == 'c')
@@ -56,10 +58,13 @@ static int	print_format(va_list args, char c)
 		return (ft_puthex((unsigned long)va_arg(args, unsigned int), c));
 	else if (c == 'p')
 	{
-		if (ft_putstr("0x") != -1)
-			return (2
-				+ ft_puthex((unsigned long)(unsigned long)va_arg(args, void *),
-				c));
+		ptr = va_arg(args, void *);
+		if (ptr)
+		{
+			ft_putstr("0x");
+			return (2 + ft_puthex((unsigned long)ptr, c));
+		}
+		return (ft_putstr("0x0"));
 	}
 	return (-1);
 }

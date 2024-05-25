@@ -22,6 +22,6 @@ int	ft_putchar(int c);
 int	ft_putstr(char *s);
 int	ft_putnbr(int c);
 int	ft_putunbr(unsigned int n);
-int	ft_puthex(unsigned int n, char format);
+int	ft_puthex(unsigned long n, char format);
 
 #endif
