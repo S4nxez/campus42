@@ -64,7 +64,7 @@ static int	print_format(va_list args, char c)
 			ft_putstr("0x");
 			return (2 + ft_puthex((unsigned long)ptr, c));
 		}
-		return (ft_putstr("0x0"));
+		return (ft_putstr("(nil)"));
 	}
 	return (-1);
 }
