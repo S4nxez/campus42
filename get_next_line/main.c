@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/29 17:00:15 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/07/01 18:30:46 by dansanc3         ###   ########.fr       */
+/*   Created: 2024/06/29 18:04:13 by dansanc3          #+#    #+#             */
+/*   Updated: 2024/07/01 19:02:48 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
+#include "get_next_line.h"
+#include <stdio.h>
+#include <fcntl.h>
 
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <unistd.h>
+int	main(void)
+{
+	int		fd;
+	char	*line;
+	char	*line2;
+	int		count;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
-# endif
+	count = 0;
+	fd = open("example.txt", O_RDONLY);
+	if (fd == -1)
+	{
+		printf("Error opening file");
+		return (1);
+	}
 
-void	*ft_calloc(size_t count, size_t size);
-char	*get_next_line(int fd);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *a);
-void	*ft_memcpy(void	*dst, const void	*src, size_t	n);
-
-#endif
+	line = get_next_line(fd);
+	if (line == NULL)
+		return (1);
+	count++;
+	printf("[%d]:%s\n", count, line);
+	line = NULL;
+	close(fd);
+	return (0);
+}
