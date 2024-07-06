@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 18:04:13 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/07/01 19:02:48 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:00:36 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,12 @@ int	main(void)
 		printf("Error opening file");
 		return (1);
 	}
-
+	line = get_next_line(fd);
+	if (line == NULL)
+		return (1);
+	count++;
+	printf("[%d]:%s\n", count, line);
+	line = NULL;
 	line = get_next_line(fd);
 	if (line == NULL)
 		return (1);

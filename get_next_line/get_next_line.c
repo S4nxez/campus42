@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 17:04:56 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/07/01 18:56:05 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/07/06 18:52:21 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,25 @@ static char	*read_from_file(char *basin_buffer, int fd)
 	free (cup_buffer);
 	return (basin_buffer);
 }
+
 char	*extract_line(char *basin_buffer)
 {
 	char	*ret;
 	size_t	count;
 
 	count = 0;
-	while(basin_buffer[count] != '\n')
+	while (basin_buffer[count] && basin_buffer[count] != '\n')
 		count++;
-	ret = ft_calloc(count, sizeof(char));
+	if (basin_buffer[count] == '\n')
+		count++;
+	ret = ft_calloc(count + 1, sizeof(char));
+	if(!ret)
+		return (NULL);
 	ft_memcpy(ret, basin_buffer, count);
+	ret[count] = '\0';
 	return (ret);
 }
+
 char	*obtain_remaining(char *basin_buffer)
 {
 	char	*ret;
@@ -63,16 +70,19 @@ char	*obtain_remaining(char *basin_buffer)
 	int		count2;
 
 	count = 0;
-	while(basin_buffer[count] != '\n')
+	while (basin_buffer[count] && basin_buffer[count] != '\n')
+		count++;
+	if (basin_buffer[count] == '\n')
 		count++;
 	count2 = 0;
-	while(basin_buffer[count] != '\0')
-	{
+	while (basin_buffer[count + count2] != '\0')
 		count2++;
-		count++;
-	}
 	ret = ft_calloc(count2, sizeof(char));
+	if(!ret)
+		return (NULL);
 	ft_memcpy(ret, basin_buffer + (count - count2), count2);
+	ret[count2] = '\0';
+	free(basin_buffer);
 	return (ret);
 }
 
