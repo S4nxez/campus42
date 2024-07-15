@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 17:04:56 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/07/06 18:52:21 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/07/15 17:46:11 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	*append_buffer(char *basin_buffer, char *read_buffer)
 {
 	char	*ret;
 
+	if (!basin_buffer || !read_buffer)
+		return (NULL);
 	ret = ft_strjoin(basin_buffer, read_buffer);
 	free(basin_buffer);
 	return (ret);
@@ -25,7 +27,6 @@ static char	*read_from_file(char *basin_buffer, int fd)
 {
 	int			bytes_read;
 	char		*cup_buffer;
-	static int	count = 1;
 
 	cup_buffer = ft_calloc (BUFFER_SIZE + 1, sizeof(char));
 	if (!cup_buffer)
@@ -38,7 +39,7 @@ static char	*read_from_file(char *basin_buffer, int fd)
 			return (free(cup_buffer), NULL);
 		cup_buffer[bytes_read] = '\0';
 		basin_buffer = append_buffer(basin_buffer, cup_buffer);
-		if (ft_strchr(basin_buffer, '\n'))
+		if (!basin_buffer || ft_strchr(basin_buffer, '\n'))
 			break ;
 	}
 	free (cup_buffer);
@@ -56,7 +57,7 @@ char	*extract_line(char *basin_buffer)
 	if (basin_buffer[count] == '\n')
 		count++;
 	ret = ft_calloc(count + 1, sizeof(char));
-	if(!ret)
+	if (!ret)
 		return (NULL);
 	ft_memcpy(ret, basin_buffer, count);
 	ret[count] = '\0';
@@ -77,10 +78,10 @@ char	*obtain_remaining(char *basin_buffer)
 	count2 = 0;
 	while (basin_buffer[count + count2] != '\0')
 		count2++;
-	ret = ft_calloc(count2, sizeof(char));
-	if(!ret)
+	ret = ft_calloc(count2 + 1, sizeof(char));
+	if (!ret)
 		return (NULL);
-	ft_memcpy(ret, basin_buffer + (count - count2), count2);
+	ft_memcpy(ret, basin_buffer + count, count2);
 	ret[count2] = '\0';
 	free(basin_buffer);
 	return (ret);
@@ -101,5 +102,12 @@ char	*get_next_line(int fd)
 		return (free(basin_buffer), NULL);
 	line = extract_line(basin_buffer);
 	basin_buffer = obtain_remaining(basin_buffer);
+	if (!line[0])
+	{
+		free(line);
+		free(basin_buffer);
+		basin_buffer = NULL;
+		return (NULL);
+	}
 	return (line);
 }
