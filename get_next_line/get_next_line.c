@@ -6,7 +6,7 @@
 /*   By: dansanc3 <dansanc3@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 17:04:56 by dansanc3          #+#    #+#             */
-/*   Updated: 2024/07/15 17:46:11 by dansanc3         ###   ########.fr       */
+/*   Updated: 2024/07/17 20:53:24 by dansanc3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ char	*append_buffer(char *basin_buffer, char *read_buffer)
 
 static char	*read_from_file(char *basin_buffer, int fd)
 {
-	int			bytes_read;
-	char		*cup_buffer;
+	int		bytes_read;
+	char	*cup_buffer;
 
 	cup_buffer = ft_calloc (BUFFER_SIZE + 1, sizeof(char));
 	if (!cup_buffer)
@@ -92,7 +92,7 @@ char	*get_next_line(int fd)
 	static char	*basin_buffer;
 	char		*line;
 
-	if (fd < 0 || read(fd, NULL, 0) < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!basin_buffer)
 		basin_buffer = ft_calloc(1, sizeof(char));
