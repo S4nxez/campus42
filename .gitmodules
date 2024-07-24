@@ -1,0 +1,3 @@
+[submodule "fractol"]
+	path = fractol
+	url = https://github.com/s4nxez/fractol
