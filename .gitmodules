@@ -1,3 +1,15 @@
-[submodule "fractol"]
-	path = fractol
+[submodule "Milestone 2/fractol"]
+	path = Milestone 2/fractol
 	url = https://github.com/s4nxez/fractol
+[submodule "Milestone 2/Push_swap"]
+	path = Milestone 2/Push_swap
+	url = https://github.com/S4nxez/Push_swap
+[submodule "Milestone 2/MiniTalk"]
+	path = Milestone 2/MiniTalk
+	url = https://github.com/S4nxez/miniTalk
+[submodule "Milestone 3/MiniShell"]
+	path = Milestone 3/MiniShell
+	url = https://github.com/jmateo-v/Minishell42
+[submodule "Milestone 3/Philosophers"]
+	path = Milestone 3/Philosophers
+	url = https://github.com/S4nxez/philosophers

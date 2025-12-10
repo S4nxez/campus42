@@ -1,21 +1,28 @@
 # Campus 42
 
-¡Bienvenido a mi repositorio de Campus 42!
+Repositorio con los proyectos que he ido completando en Campus 42, organizados por milestones. Cada carpeta incluye su propio `README.md` con instrucciones y detalles técnicos.
 
-Aquí encontrarás una colección de proyectos realizados durante mi experiencia en Campus 42, cada uno acompañado de una breve descripción.
+## Milestone 0
 
-## Proyectos Disponibles
+- `libft`: biblioteca estándar en C con utilidades de memoria, cadenas y listas enlazadas que sirven de base para el resto de proyectos.
 
-### Libft
+## Milestone 1
 
-Libft es un proyecto esencial en Campus 42. Se trata de una biblioteca estándar en C que contiene una variedad de funciones útiles para trabajar con cadenas, caracteres, memoria y listas.
+- `ft_printf`: reimplementación de `printf` con manejo de formatos básicos y variádicas.
+- `get_next_line`: lectura eficiente de archivos línea a línea con gestión de buffer estático.
+- `Born2beroot`: configuración de una máquina virtual y endurecimiento básico del sistema.
 
-Para obtener más información sobre el proyecto Libft, consulta el README.md en la carpeta correspondiente.
-### ft_printf
+## Milestone 2
 
+- `Push_swap`: algoritmo para ordenar una pila con operaciones mínimas, incluye optimizaciones por chunks y casos cortos.
+- `MiniTalk`: comunicación cliente-servidor mediante señales UNIX para enviar mensajes y caracteres.
+- `fractol`: visualización interactiva de fractales (Mandelbrot, Julia) con zoom y navegación.
 
-Este proyecto en C se centra en recrear la función printf, haciendo uso del proyecto anterior. Es una oportunidad para profundizar en la manipulación de cadenas de formato y aprender sobre la gestión de la salida en C y las funciones variádicas.
+## Milestone 3
+
+- `MiniShell`: shell mínima con parsing, expansión, piping, redirecciones y gestión de señales.
+- `Philosophers`: simulación del problema de los filósofos comensales con hilos y protección frente a race conditions.
 
 ## Contribuciones
 
-Siéntete libre de explorar los proyectos disponibles y proporcionar cualquier comentario, sugerencia o contribución que consideres útil. ¡Toda ayuda es bienvenida!
+Explora, abre issues o PRs si quieres sugerir mejoras. ¡Toda ayuda es bienvenida!
