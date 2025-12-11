@@ -1,5 +1,8 @@
 name: Update submodules when a child repo changes
 
+permissions:
+  contents: write
+
 on:
   repository_dispatch:
     types: [child_updated]
@@ -10,29 +13,27 @@ jobs:
 
     steps:
       - name: Checkout portfolio repo
-      uses: actions/checkout@v4
-      with:
-        submodules: recursive
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Configure Git
-      run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
 
       - name: Update submodules to latest main
-      run: |
-        git submodule update --remote --merge
+        run: |
+          git submodule update --remote --merge
 
       - name: Commit changes
-      run: |
-        git add .
-        if git diff --cached --quiet; then
-          echo "No submodule updates"
-          exit 0
-        fi
-        git commit -m "Auto-update submodules from child repo change"
+        run: |
+          git add .
+          if git diff --cached --quiet; then
+            echo "No submodule updates"
+            exit 0
+          fi
+          git commit -m "Auto-update submodules from child repo change"
 
       - name: Push changes
-      run: |
-        git push
-        echo "Submodules updated"
+        run: git push
