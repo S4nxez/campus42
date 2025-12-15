@@ -13,3 +13,6 @@
 [submodule "Milestone 3/Philosophers"]
 	path = Milestone 3/Philosophers
 	url = https://github.com/S4nxez/philosophers
+[submodule "Milestone 2/Fractol"]
+	path = Milestone 2/Fractol
+	url = https://github.com/S4nxez/Fractol
