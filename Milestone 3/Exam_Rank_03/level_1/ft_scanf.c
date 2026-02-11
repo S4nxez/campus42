@@ -6,9 +6,9 @@ int match_space(FILE *f)
 {
 	char c = fgetc(f);
 
-	if (c == 'EOF')
+	if (c == EOF)
 		return (-1);
-    	while(isSpace(c))
+    	while(isspace(c))
 		c = fgetc(f);
 	ungetc(c, f);
     	return (1);
@@ -18,7 +18,7 @@ int match_char(FILE *f, char c)
 {
         char x = fgetc(f);
 
-	if (x == 'EOF')
+	if (x == EOF)
 		return (-1);
 	if (x == c)
 		return (1);
@@ -28,27 +28,63 @@ int match_char(FILE *f, char c)
 
 int scan_char(FILE *f, va_list ap)
 {
-        char c = fgetc(f); //lo que acaba de leer del stdin
+        int c = fgetc(f); //lo que acaba de leer del stdin
 
 	char *y = va_arg(ap, char *); //extrae el siguiente argumento de la lista variádica, si el usuario pone ft_scanf("%c", &c);, devuelve &c, 'y' ahora apunta a la variable donde hay que guardar el carácter leído (c)
-	if (c == 'EOF')
+	if (c == EOF)
 		return (-1);
 	*y = c; //guarda el carácter leído en y
-	unget(c, f);
+	ungetc(c, f);
 
     	return (1);
 }
 
 int scan_int(FILE *f, va_list ap)
 {
-        // You may insert code here
-    	return (0);
+        char c = fgetc(f);
+	int ret = 0;
+	int *arg = va_arg(ap, int *);
+	int sign = 1;
+
+	if (c == '+' || c == '-') {
+		if (c == '-') sign = -1;
+		char c2 = fgetc(f);
+		if (!isdigit(c2)) {
+			ungetc(c2, f);
+			ungetc(c, f);
+			return (-1);
+		}
+		ungetc(c2, f);
+	}
+
+	if (c != '+' && c != '-' && !isdigit(c)) {
+		ungetc(c, f);
+		return (-1);
+	}
+	while(isdigit(c)) {
+		ret = ret * 10 + (c -'0');
+		c = fgetc(f);
+	}
+	ungetc(c, f);
+	ret *= sign;
+	*arg = ret;
+    	return (1);
 }
 
 int scan_string(FILE *f, va_list ap)
 {
-        // You may insert code here
-    	return (0);
+	char c;
+       	int i = 0;
+	char *buffer = va_arg(ap, char *);
+
+	c = fgetc(f);
+        while(!isspace(c) && c != EOF) {		
+		buffer[i++] = c;
+		c = fgetc(f);
+	}
+	ungetc(c, f);
+	buffer[i] = '\0';
+	return (1);
 }
 
 
@@ -110,9 +146,27 @@ int ft_scanf(const char *format, ...)
 {
 	va_list ap;
 
-	va_start(format, ap);
+	va_start(ap, format);
 	int ret = ft_vfscanf(stdin, format, ap);
-	va_end(format, ap);
+	va_end(ap);
 	return ret;
 }
 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int decimal;
+    char character;
+    char string[100];
+
+    ft_scanf("%d", &decimal);
+    ft_scanf("%c", &character);
+    ft_scanf("%s", string);
+
+    printf("string: %s\n", string);
+    printf("decimal: %d\n", decimal);
+    printf("character: %c\n", character);
+}
